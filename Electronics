@@ -1,0 +1,59 @@
+package com.SpringBoot.ElectronicsSB;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Electronicss")
+public class Electronics {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	String product;
+	int quantity;
+	int price;
+	
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	@Override
+	public String toString() {
+		return "Electronics [product=" + product + ", quantity=" + quantity + ", price=" + price + "]";
+	}
+	public Electronics(String product, int quantity, int price) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
+		this.price = price;
+	}
+	public Electronics() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+}
