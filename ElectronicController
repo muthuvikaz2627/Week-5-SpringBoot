@@ -1,0 +1,45 @@
+package com.SpringBoot.ElectronicsSB;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping("Electronics")
+public class ElectronicController {
+	
+	//create operation
+    @Autowired
+       private ElectronicRepository electronicRepository;
+
+       // get all employees
+       @GetMapping("/getelectronicss")
+       public List<Electronics> getAllElectronic(){
+           return electronicRepository.findAll();
+       } 
+       @PostMapping("/addelectronicss")
+       public Electronics addCustomers(@RequestBody Electronics electronicss) {
+           return electronicRepository.save(electronicss);
+       }
+
+       /*// create employee rest pi
+       @PostMapping("/addcustomers")
+       public Customer createCustomer(@RequestBody Customer customers) {
+           return (Customer) customerRepository.save(customers);
+       }*/
+       
+       //delete operation
+       @DeleteMapping("/deleteelectronicss/{id}")
+       public void deleteElectronic(@PathVariable("id") int id) {
+           System.out.println("Record deleted");
+           electronicRepository.deleteById(id);
+       }
+}
